@@ -5,8 +5,12 @@ public class Building implements BuildingRequirements {
     protected int nFloors = 1;
 
     public Building(String name, String address, int nFloors) {
-        if (name != null) { this.name = name; }
-        if (address != null) { this.address = address; } 
+        if (name != null) {
+            this.name = name;
+        }
+        if (address != null) {
+            this.address = address;
+        }
         if (nFloors < 1) {
             throw new RuntimeException("Cannot construct a building with fewer than 1 floor.");
         }
