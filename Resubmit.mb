@@ -1,0 +1,5 @@
+The changed I made are I made sure to compile my program to see if it will. I also fixed all errors.
+I also added the exception to not be able to check out a book that is checked out(in general I added
+exceptions in library). In house I added the exception so the same student can not move in twice. 
+All of cafe, library, house extends to buildings and this time it should compile. I also added Javadoc
+comments to everything.

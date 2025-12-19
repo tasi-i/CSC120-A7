@@ -2,57 +2,77 @@ import java.util.ArrayList;
 
 /**
  * A House is a type of Building that can have student residents
- * and optionally a dining room.
+ * and possible a dining room.
  */
 public class House extends Building implements HouseRequirements {
 
-  private ArrayList<Student> residents;
-  private boolean hasDiningRoom;
+    private final ArrayList<Student> residents;
+    private final boolean hasDiningRoom;
 
-  public House(String name, String address, int nFloors, boolean hasDiningRoom) {
-    super(name, address, nFloors);
-    this.residents = new ArrayList<>();
-    this.hasDiningRoom = hasDiningRoom;
-  }
-
-  public boolean hasDiningRoom() {
-    return this.hasDiningRoom;
-  }
-
-  public int nResidents() {
-    return this.residents.size();
-  }
-
-  public void moveIn(Student s) {
-    if (!isResident(s))
-      this.residents.add(s);
-  }
-
-  public Student moveOut(Student s) {
-    if (isResident(s)) {
-      this.residents.remove(s);
-      return s;
+    /**
+     * Construct a new House.
+     *
+     * @param name Name of the house
+     * @param address Address of the house
+     * @param nFloors Number of floors
+     * @param hasDiningRoom Whether the house has a dining room
+     */
+    public House(String name, String address, int nFloors, boolean hasDiningRoom) {
+        super(name, address, nFloors);
+        this.residents = new ArrayList<>();
+        this.hasDiningRoom = hasDiningRoom;
     }
-    return null;
-  }
 
-  public boolean isResident(Student s) {
-    return this.residents.contains(s);
-  }
+    /** @return whether the house has a dining room */
+    @Override
+    public boolean hasDiningRoom() {
+        return this.hasDiningRoom;
+    }
 
-  /** Prints full info for this House */
-  public void printHouseInfo() {
-    System.out.println(this.getName() + " is a " + this.getFloors() + "-story house located at " + this.getAddress());
-    System.out.println("Has dining room? " + this.hasDiningRoom());
-    System.out.println("Number of residents: " + this.nResidents());
-  }
+    /** @return number of students currently living in the house */
+    @Override
+    public int nResidents() {
+        return this.residents.size();
+    }
 
-  public static void main(String[] args) {
-    House alHouse = new House("Al House", "1 College Rd", 3, true);
-    Student s1 = new Student("Boba", "A001", 2025);
-    Student s2 = new Student("Lena", "B002", 2024);
-    alHouse.moveIn(s1);
-    alHouse.moveIn(s2);
-    alHouse.printHouseInfo();
-  }
+    /**
+     * Moves a student into the house.
+     *
+     * @param s Student to move in
+     */
+    @Override
+    public void moveIn(Student s) {
+        if (isResident(s)) {
+            throw new IllegalStateException("Student already resides in the house: " + s.getName());
+        }
+        this.residents.add(s);
+    }
+
+    /**
+     * Moves a student out of the house.
+     *
+     * @param s Student to move out
+     * @return the student removed
+     */
+    @Override
+    public Student moveOut(Student s) {
+        if (!isResident(s)) {
+            throw new IllegalArgumentException("Cannot move out non-resident: " + s.getName());
+        }
+        this.residents.remove(s);
+        return s;
+    }
+
+    /**
+     * Checks if a student is a resident
+     *
+     * @param s Student to check
+     * @return true if the student lives in the house
+     */
+    @Override
+    public boolean isResident(Student s) {
+        return this.residents.contains(s);
+    }
+
+    
 }

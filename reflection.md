@@ -2,10 +2,5 @@ Use this file to record your reflection on this assignment.
 
 - What are your initial impressions of how `Inheritance` affects your programming?
 - What worked, what didn't, what advice would you give someone taking this course in the future?
-To me Inheritance was one of the easier lessons we have had. I undertsand how there are different types of buidlings and they all inheratly have similary things while they do not all have the same function. My advice would be to understand Inheritance before you try to code it out.
-A error I kept having was:
-"tempCodeRunnerFile.java:1: error: reached end of file while parsing
-a
-^
-1 error"
-Whenever I code I always click enter to the next line. However this time the error sometimes would show and I realized I need to fix that habit.
+
+Initially it made sence to me. I feel like in class I was able to easily understand that buildings is the parent which has many buildings that do not have all the same functions. In the end they are still buildings just different ones. Learning how to do this helped me think about what needs what action. it will help me plan better and overall give me an easier time while reading my code. My advice would be understadn inheritance before coding it. You need a plan of how your code will go and which classes will have each characteristics. 
