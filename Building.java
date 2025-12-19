@@ -32,10 +32,4 @@ public class Building implements BuildingRequirements {
     public String toString() {
         return this.name + " is a " + this.nFloors + "-story building located at " + this.address;
     }
-
-    public static void main(String[] args) {
-        Building fordHall = new Building("Ford Hall", "100 Green Street Northampton, MA 01063", 4);
-        System.out.println(fordHall);
-    }
-
 }
